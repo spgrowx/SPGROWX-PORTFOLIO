@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spgrowx.github.io/SPGROWX-PORTFOLIO/sitemap.xml
