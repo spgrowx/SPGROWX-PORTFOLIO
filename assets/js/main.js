@@ -9,6 +9,12 @@
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const toPx = (v, fb) => {
+    v = (v || '').trim();
+    const n = parseFloat(v);
+    if (isNaN(n)) return fb;
+    return /rem$/.test(v) ? n * parseFloat(getComputedStyle(root).fontSize) : n;
+  };
 
   /* ---------- navbar: glass strengthens on scroll ---------- */
   const nav = $('#nav');
@@ -89,9 +95,9 @@
     const blobIo = new IntersectionObserver(es => es.forEach(e => {
       e.target.classList.toggle('run', e.isIntersecting);
     }), {rootMargin: '250px 0px'});
-    $$('.hb,.blob,.ct-blob').forEach(el => blobIo.observe(el));
+    $$('.hb,.blob,.ct-blob,.cube3d,.kb-track').forEach(el => blobIo.observe(el));
   } else {
-    $$('.hb,.blob,.ct-blob').forEach(el => el.classList.add('run'));
+    $$('.hb,.blob,.ct-blob,.cube3d,.kb-track').forEach(el => el.classList.add('run'));
   }
 
   /* ---------- button ripple ---------- */
@@ -118,7 +124,7 @@
       let cur = 0;
       tlItems.forEach((it, i) => {
         const cs = getComputedStyle(it);
-        const nc = parseFloat(cs.getPropertyValue('--nc')) || 48, gap = parseFloat(cs.marginBottom) || 32;
+        const nc = toPx(cs.getPropertyValue('--nc'), 48), gap = parseFloat(cs.marginBottom) || 32;
         const r = it.getBoundingClientRect(), c = r.top + nc;
         const f = reduce ? 1 : Math.min(1, Math.max(0, (ty - c) / (r.height + gap)));
         const on = reduce || ty >= c;
@@ -138,6 +144,20 @@
     addEventListener('scroll', reqTl, {passive: true});
     addEventListener('resize', reqTl);
     updTl();
+  }
+
+  /* ---------- scroll progress bar ---------- */
+  const spBar = $('.sp-bar');
+  if (spBar) {
+    let spq = 0;
+    const spUpdate = () => {
+      spq = 0;
+      const h = document.documentElement.scrollHeight - innerHeight;
+      spBar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, scrollY / h) : 0).toFixed(4) + ')';
+    };
+    addEventListener('scroll', () => { if (!spq) spq = requestAnimationFrame(spUpdate); }, {passive: true});
+    addEventListener('resize', spUpdate);
+    spUpdate();
   }
 
   /* everything below is pointer-only polish */
@@ -174,7 +194,7 @@
   }
 
   /* ---------- glass cards: spotlight follows the pointer ---------- */
-  $$('.hw-card,.tl-card,.cp-card,.ab-card,.pc-card').forEach(c => {
+  $$('.hw-card,.tl-card,.rs-card,.ab-card,.pc-card').forEach(c => {
     c.addEventListener('pointermove', e => {
       const r = c.getBoundingClientRect();
       c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -193,6 +213,36 @@
     });
     card.addEventListener('pointerleave', () => { it.style.setProperty('--nx', '0px'); it.style.setProperty('--ny', '0px'); });
   });
+
+  /* ---------- 3D tilt on glass cards + soft cursor light ---------- */
+  $$('.hw-card,.tl-card,.pc-card,.rs-card,.ab-card,.svc-vis,.stat,.ct-card').forEach(c => {
+    c.setAttribute('data-tilt', '');
+    c.addEventListener('pointermove', e => {
+      const r = c.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.setProperty('--ry', (x * 9).toFixed(2) + 'deg');
+      c.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg');
+      c.style.setProperty('--ix', x.toFixed(3));
+      c.style.setProperty('--iy', y.toFixed(3));
+    });
+    c.addEventListener('pointerleave', () => ['--rx', '--ry', '--ix', '--iy'].forEach(k => c.style.removeProperty(k)));
+  });
+
+  const glow = $('.cglow');
+  if (glow) {
+    let gx = 0, gy = 0, tx = 0, ty = 0, graf = 0, shown = false;
+    const gloop = () => {
+      gx += (tx - gx) * .14; gy += (ty - gy) * .14;
+      glow.style.transform = 'translate3d(' + (gx - glow.offsetWidth / 2) + 'px,' + (gy - glow.offsetHeight / 2) + 'px,0)';
+      graf = (Math.abs(tx - gx) > .5 || Math.abs(ty - gy) > .5) ? requestAnimationFrame(gloop) : 0;
+    };
+    addEventListener('pointermove', e => {
+      tx = e.clientX; ty = e.clientY;
+      if (!shown) { shown = true; gx = tx; gy = ty; glow.classList.add('on'); }
+      if (!graf) graf = requestAnimationFrame(gloop);
+    }, {passive: true});
+    document.documentElement.addEventListener('pointerleave', () => { shown = false; glow.classList.remove('on'); });
+  }
 
   /* ---------- section blob parallax (eased) ---------- */
   $$('[data-parallax]').forEach(sec => {

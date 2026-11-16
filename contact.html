@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact | SP GROWX</title>
+<meta name="theme-color" content="#FF6400">
 <meta name="description" content="Have a project, business idea, or marketing goal? Contact SP GROWX on WhatsApp, Instagram or email, or send a message through the form.">
-<meta name="theme-color" content="#FBF2DD" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#130C07" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SP GROWX">
 <meta property="og:title" content="Contact | SP GROWX">
@@ -20,45 +19,10 @@
 <script>(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('spg-nav')){d.classList.add('nav-seen')}else{sessionStorage.setItem('spg-nav','1')}}catch(e){}})();</script>
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/contact.js" defer></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP1KW8PTTX"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-EP1KW8PTTX');
-</script>
-  
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ytvg57fbgr");
-</script>
-  
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1133868522913996');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1133868522913996&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="sp-bar" aria-hidden="true"></div><div class="cglow" aria-hidden="true"></div>
 
 <header class="nav-wrap">
   <nav class="nav" id="nav" aria-label="Primary">
@@ -91,6 +55,7 @@ src="https://www.facebook.com/tr?id=1133868522913996&ev=PageView&noscript=1"
   <div class="container">
     <div class="ct-panel reveal">
       <span class="ct-mark" aria-hidden="true"></span>
+      <span class="cube-pos cube-w" style="right:6%;bottom:5%" aria-hidden="true"><span class="cube3d" style="--s:3.4rem;--t:30s;animation-delay:-2s"><i class="f f1"></i><i class="f f2"></i><i class="f f3"></i><i class="f f4"></i><i class="f f5"></i><i class="f f6"></i></span></span>
       <span class="pl" style="--d:-30;right:14%;top:-70px" aria-hidden="true"><span class="ct-orb" style="width:190px;height:190px"></span></span>
       <span class="pl" style="--d:24;right:3%;bottom:-26px" aria-hidden="true"><span class="ct-orb" style="width:96px;height:96px;animation-delay:-4s"></span></span>
       <span class="pl" style="--d:18;left:-6%;bottom:-10%" aria-hidden="true"><span class="ct-blob" style="width:360px;height:360px"></span></span>
@@ -111,12 +76,16 @@ src="https://www.facebook.com/tr?id=1133868522913996&ev=PageView&noscript=1"
         <form class="ct-form" id="ctform" novalidate>
           <div class="ct-body">
             <div class="ct-fields">
-              <div class="fld"><label for="f-name">Full Name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your full name" required><span class="msg">Please enter your name.</span></div>
-              <div class="fld"><label for="f-email">Email Address</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><span class="msg">Please enter a valid email address.</span></div>
-              <div class="fld"><label for="f-phone">Phone Number</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 00000 00000" required><span class="msg">Please enter a valid phone number.</span></div>
-              <div class="fld"><label for="f-biz">Business Name <small>(Optional)</small></label><input id="f-biz" name="business" type="text" autocomplete="organization" placeholder="Your business name"></div>
-              <div class="fld full"><label for="f-service">Service Required</label><select id="f-service" name="service" required><option value="" disabled selected>Select a service</option><option value="Meta Ads">Meta Ads</option><option value="Social Media Marketing">Social Media Marketing</option><option value="SEO">SEO</option><option value="Branding">Branding</option><option value="Content Marketing">Content Marketing</option><option value="AI Automation">AI Automation</option><option value="Website Development">Website Development</option><option value="Other">Other</option></select><span class="msg">Please choose a service.</span></div>
-              <div class="fld full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Tell me about your project or goal" required></textarea><span class="msg">Please write a short message.</span></div>
+              <div class="fld"><label for="f-name">Full Name</label><input id="f-name" name="name" type="text" autocomplete="name" autocapitalize="words" maxlength="60" placeholder="Your full name" required><span class="msg">Please enter your full name.</span></div>
+              <div class="fld"><label for="f-email">Email Address</label><input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="80" placeholder="you@gmail.com" required><span class="msg">Please enter a valid email address.</span></div>
+              <div class="fld"><label for="f-phone">Phone Number <small id="ph-hint">(10 digits)</small></label>
+                <div class="ph-row">
+                  <div class="cc"><span class="cc-view" aria-hidden="true"><b id="cc-iso">IN</b><span id="cc-dial">+91</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span><select id="f-cc" name="country" aria-label="Country code"><option value="IN" data-dial="91" data-min="10" data-max="10" data-ph="98765 43210" selected>India (+91)</option><option value="AE" data-dial="971" data-min="9" data-max="9" data-ph="50 123 4567">United Arab Emirates (+971)</option><option value="AU" data-dial="61" data-min="9" data-max="9" data-ph="412 345 678">Australia (+61)</option><option value="BD" data-dial="880" data-min="10" data-max="10" data-ph="1712 345678">Bangladesh (+880)</option><option value="BH" data-dial="973" data-min="8" data-max="8" data-ph="3612 3456">Bahrain (+973)</option><option value="BR" data-dial="55" data-min="10" data-max="11" data-ph="11 91234 5678">Brazil (+55)</option><option value="CA" data-dial="1" data-min="10" data-max="10" data-ph="416 555 0123">Canada (+1)</option><option value="CN" data-dial="86" data-min="11" data-max="11" data-ph="131 2345 6789">China (+86)</option><option value="EG" data-dial="20" data-min="10" data-max="10" data-ph="100 123 4567">Egypt (+20)</option><option value="FR" data-dial="33" data-min="9" data-max="9" data-ph="6 12 34 56 78">France (+33)</option><option value="DE" data-dial="49" data-min="10" data-max="11" data-ph="1512 3456789">Germany (+49)</option><option value="HK" data-dial="852" data-min="8" data-max="8" data-ph="5123 4567">Hong Kong (+852)</option><option value="ID" data-dial="62" data-min="9" data-max="12" data-ph="812 3456 7890">Indonesia (+62)</option><option value="IE" data-dial="353" data-min="8" data-max="9" data-ph="85 123 4567">Ireland (+353)</option><option value="IT" data-dial="39" data-min="9" data-max="10" data-ph="312 345 6789">Italy (+39)</option><option value="JP" data-dial="81" data-min="10" data-max="10" data-ph="90 1234 5678">Japan (+81)</option><option value="KE" data-dial="254" data-min="9" data-max="9" data-ph="712 345 678">Kenya (+254)</option><option value="KW" data-dial="965" data-min="8" data-max="8" data-ph="5123 4567">Kuwait (+965)</option><option value="MY" data-dial="60" data-min="9" data-max="10" data-ph="12 345 6789">Malaysia (+60)</option><option value="MX" data-dial="52" data-min="10" data-max="10" data-ph="55 1234 5678">Mexico (+52)</option><option value="NP" data-dial="977" data-min="10" data-max="10" data-ph="98 1234 5678">Nepal (+977)</option><option value="NL" data-dial="31" data-min="9" data-max="9" data-ph="6 12345678">Netherlands (+31)</option><option value="NZ" data-dial="64" data-min="8" data-max="10" data-ph="21 123 4567">New Zealand (+64)</option><option value="NG" data-dial="234" data-min="10" data-max="10" data-ph="802 123 4567">Nigeria (+234)</option><option value="OM" data-dial="968" data-min="8" data-max="8" data-ph="9212 3456">Oman (+968)</option><option value="PK" data-dial="92" data-min="10" data-max="10" data-ph="300 1234567">Pakistan (+92)</option><option value="PH" data-dial="63" data-min="10" data-max="10" data-ph="917 123 4567">Philippines (+63)</option><option value="QA" data-dial="974" data-min="8" data-max="8" data-ph="3312 3456">Qatar (+974)</option><option value="RU" data-dial="7" data-min="10" data-max="10" data-ph="912 345 6789">Russia (+7)</option><option value="SA" data-dial="966" data-min="9" data-max="9" data-ph="50 123 4567">Saudi Arabia (+966)</option><option value="SG" data-dial="65" data-min="8" data-max="8" data-ph="8123 4567">Singapore (+65)</option><option value="ZA" data-dial="27" data-min="9" data-max="9" data-ph="71 123 4567">South Africa (+27)</option><option value="KR" data-dial="82" data-min="9" data-max="10" data-ph="10 1234 5678">South Korea (+82)</option><option value="ES" data-dial="34" data-min="9" data-max="9" data-ph="612 34 56 78">Spain (+34)</option><option value="LK" data-dial="94" data-min="9" data-max="9" data-ph="71 234 5678">Sri Lanka (+94)</option><option value="TH" data-dial="66" data-min="9" data-max="9" data-ph="81 234 5678">Thailand (+66)</option><option value="TR" data-dial="90" data-min="10" data-max="10" data-ph="501 234 5678">Turkey (+90)</option><option value="GB" data-dial="44" data-min="10" data-max="10" data-ph="7400 123456">United Kingdom (+44)</option><option value="US" data-dial="1" data-min="10" data-max="10" data-ph="201 555 0123">United States (+1)</option></select></div>
+                  <input id="f-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" pattern="[0-9]*" maxlength="10" placeholder="98765 43210" required>
+                </div>
+                <span class="msg">Please enter a valid phone number.</span></div>
+              <div class="fld"><label for="f-biz">Business Name <small>(Optional)</small></label><input id="f-biz" name="business" type="text" autocomplete="organization" maxlength="60" placeholder="Your business name"><span class="msg">Business name looks too short.</span></div>
+              <div class="fld full"><label for="f-msg">Message <span class="cnt" id="msg-cnt" aria-hidden="true">0 / 10 min</span></label><textarea id="f-msg" name="message" maxlength="1000" placeholder="Tell me about your project or goal" required></textarea><span class="msg">Please write at least 10 characters about your project.</span></div>
             </div>
             <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="ct-actions">
